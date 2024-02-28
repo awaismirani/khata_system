@@ -2,16 +2,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:khata_system/person_controller.dart';
-import 'package:khata_system/person_model.dart';
-
+import 'package:khata_system/controllers/person_controller.dart';
+import 'package:khata_system/models/person_model.dart';
+import 'package:khata_system/views/layouts/layout/layout_home.dart';
+import 'package:khata_system/views/screens/screen_person.dart';
+const appColor = Color(0xff004202);
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Hive.initFlutter();
-  Hive.registerAdapter(PersonAdapter());
-  Hive.registerAdapter(ItemAdapter());
-  await Hive.openBox<Person>('personBox');
-
+  // WidgetsFlutterBinding.ensureInitialized();
+  // await Hive.initFlutter();
+  // Hive.registerAdapter(PersonAdapter());
+  // Hive.registerAdapter(ItemAdapter());
+  // await Hive.openBox<Person>('personBox');
   runApp(MyApp());
 }
 
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomeScreen(),
+      home: LayoutHome(),
     );
   }
 }
@@ -78,8 +79,7 @@ class HomeScreen extends StatelessWidget {
             isReceived: false,
             createdDate: DateTime.now(),
           );
-
-          personController.addPerson('New Person', 1, []);
+          personController.addPerson();
         },
         child: Icon(Icons.add),
       ),
@@ -109,7 +109,7 @@ class _PersonDetailScreenState extends State<PersonDetailScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Text('ID: ${widget.person.id}'),
+            // Text('ID: ${widget.person.id}'),
             SizedBox(height: 20),
             Text(
               'Total: ${total(widget.person.items)}',
