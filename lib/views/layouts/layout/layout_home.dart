@@ -81,15 +81,22 @@ class LayoutHome extends StatelessWidget {
                           borderRadius: BorderRadius.circular(25),
                         ),
                         fillColor: Colors.transparent,
+
                         contentPadding:
                             EdgeInsets.symmetric(vertical: 0, horizontal: 8),
-                        hintText: '  Search Nearby Pharmacy',
+                        hintText: 'Search Nearby Pharmacy',
                         prefixIconConstraints:
-                            BoxConstraints(maxHeight: 25, maxWidth: 25),
-                        prefixIcon: Image.asset(
-                          'assets/icons/search.png',
-                          height: 25,
-                          width: 25,
+                            BoxConstraints(maxHeight: 25, maxWidth: 30),
+                        prefixIcon: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Image.asset(
+                              'assets/icons/search.png',
+                              height: 25,
+                              width: 25,
+                            ),
+                            SizedBox(width: 5,),
+                          ],
                         ),
                       ),
                     ),
